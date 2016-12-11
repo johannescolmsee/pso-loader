@@ -1,0 +1,17 @@
+<PsoVersionDetectionDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+                               DefaultReturnValue="4294967295">
+  <VersionChecks>
+    <PsoVersionDetection HexAddress="805D0000" HexComparisonValue="47504F4A" ReturnValue="0"/>
+    <!-- JP 0- -->
+    <PsoVersionDetection HexAddress="805D0000" HexComparisonValue="47504F45" ReturnValue="1"/>
+    <!-- US 0- -->
+    <PsoVersionDetection HexAddress="805D5F80" HexComparisonValue="47504F45" ReturnValue="2"/>
+    <!-- US 1 -->
+    <PsoVersionDetection HexAddress="805DB9E0" HexComparisonValue="47504F50" ReturnValue="3"/>
+    <!-- EU 0 -->
+    <PsoVersionDetection HexAddress="805D0000" HexComparisonValue="47504F4A" ReturnValue="4"/>
+    <!-- JP P- -->
+    <PsoVersionDetection HexAddress="805D0000" HexComparisonValue="47504F45" ReturnValue="5"/>
+    <!-- US P- -->
+  </VersionChecks>
+</PsoVersionDetectionDefinition>

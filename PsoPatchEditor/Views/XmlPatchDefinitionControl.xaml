@@ -1,0 +1,38 @@
+﻿<catel:UserControl x:Class="PsoPatchEditor.Views.XmlPatchDefinitionControl"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:converter="clr-namespace:PsoPatchEditor.Converter"
+                   xmlns:catel="http://catel.codeplex.com">
+    <catel:UserControl.Resources>
+        <converter:ByteArrayToStringConverter x:Key="ByteArrayToStringConverter" />
+        <converter:Uint32ToHexStringConverter x:Key="Uint32ToHexStringConverter" />
+    </catel:UserControl.Resources>
+    <catel:StackGrid>
+        <catel:StackGrid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </catel:StackGrid.RowDefinitions>
+        <catel:StackGrid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+        </catel:StackGrid.ColumnDefinitions>
+        
+        <Label Content="Name" Grid.Column="0"/>
+        <TextBox Text="{Binding Path=Name,Mode=TwoWay}" Grid.Column="1" Grid.ColumnSpan="2"/>
+
+        <Label Content="Address" Grid.Column="0"/>
+        <TextBox Text="{Binding Path=Address,Mode=TwoWay, Converter={StaticResource Uint32ToHexStringConverter}}" Grid.Column="1" Grid.ColumnSpan="2"/>
+        
+        <Label Content="String-Value" Grid.Column="0"/>
+        <TextBox Text="{Binding Path=StringValue,Mode=TwoWay}" Grid.Column="1"/>
+        <CheckBox Content="Add terminating zero" IsChecked="{Binding AddTerminatingZero}" Grid.Column="2" />
+        
+        <Label Content="Bytes" Grid.Column="0" />
+        <TextBox Text="{Binding ByteValues, Converter={StaticResource ByteArrayToStringConverter}, Mode=TwoWay}" Grid.Column="1" Grid.ColumnSpan="2" />
+    </catel:StackGrid>
+    
+</catel:UserControl>

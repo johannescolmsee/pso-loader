@@ -1,0 +1,27 @@
+﻿<catel:UserControl x:Class="PsoPatchEditor.Views.RedirectControl"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:catel="http://catel.codeplex.com">
+
+    <catel:StackGrid>
+        <catel:StackGrid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </catel:StackGrid.RowDefinitions>
+        <catel:StackGrid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </catel:StackGrid.ColumnDefinitions>
+
+        <Label Content="Name" Grid.Column="0"/>
+        <TextBox Text="{Binding Path=Name,Mode=TwoWay}" Grid.Column="1" />
+        
+        <Label Content="Address" Grid.Column="0"/>
+        <TextBox Text="{Binding Path=IPAddress,Mode=TwoWay}" Grid.Column="1" />
+
+        <Label Content="Port" Grid.Column="0"/>
+        <TextBox Text="{Binding Path=Port,Mode=TwoWay}" Grid.Column="1" />
+    </catel:StackGrid>
+    
+</catel:UserControl>

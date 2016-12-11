@@ -1,0 +1,16 @@
+initial load chardata pos (name)
+80F0F8BC
+80F1DCBC
+
+
+
+"same places" tried:
+80f27b90 HIT!
+
+
+name offset = 880
+playerstruct size = 1656
+
+--> start of char data struct:
+
+80F27820

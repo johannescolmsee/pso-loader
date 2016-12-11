@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{90005CEE-2ED5-4F63-A698-E2EF29238524}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LibPSO</RootNamespace>
+    <AssemblyName>LibPSO</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="EncryptionDirection.cs" />
+    <Compile Include="GCPsoCrypt.cs" />
+    <Compile Include="Helper.cs" />
+    <Compile Include="IPsoCrypt.cs" />
+    <Compile Include="PacketDefinitions\MenuResultPackage.cs" />
+    <Compile Include="PacketDefinitions\UpdateCodePackageResultPackage.cs" />
+    <Compile Include="PacketDefinitions\PacketHeader.cs" />
+    <Compile Include="Packets.cs" />
+    <Compile Include="PCPsoCrypt.cs" />
+    <Compile Include="PsoPatcher\PsoPatch.cs" />
+    <Compile Include="PsoPatcher\PsoPatchBase.cs" />
+    <Compile Include="PsoPatcher\PsoPatchDefinition.cs" />
+    <Compile Include="PsoPatcher\PsoPatchType.cs" />
+    <Compile Include="PsoPatcher\PsoRangePatch.cs" />
+    <Compile Include="PsoPatcher\PsoRedirect.cs" />
+    <Compile Include="PsoPatcher\XmlPatchDefinition.cs" />
+    <Compile Include="PsoServices\Interfaces\ClientType.cs" />
+    <Compile Include="PsoServices\Interfaces\Direction.cs" />
+    <Compile Include="PsoServices\Interfaces\IPsoServer.cs" />
+    <Compile Include="PsoServices\Interfaces\IPsoServerClientConntection.cs" />
+    <Compile Include="PsoServices\Interfaces\PsoMessage.cs" />
+    <Compile Include="PsoServices\PsoServer.cs" />
+    <Compile Include="PsoServices\PsoServerClientConntection.cs" />
+    <Compile Include="PsoVersionDetector\PsoVersionDetection.cs" />
+    <Compile Include="PsoVersionDetector\PsoVersionDetectionDefinition.cs" />
+    <Compile Include="SeekOrigin.cs" />
+    <Compile Include="ServerPacketType.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PacketDefinitions\UpdateCodePackage.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{d0346f1a-df5f-44f9-874e-8ce4d7cf30d6}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="PsoPatcher\pso_patcher.s" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="PsoPatcher\pso_patcher.bin" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="PsoVersionDetector\pso_version_detector.bin" />
+    <None Include="Tools\compile.bat" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="PsoVersionDetector\pso_version_detector.s" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

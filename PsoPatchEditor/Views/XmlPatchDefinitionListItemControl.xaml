@@ -1,0 +1,41 @@
+﻿<catel:UserControl x:Class="PsoPatchEditor.Views.XmlPatchDefinitionListItemControl"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                   xmlns:common="http://PSOLoad.Source"
+                   xmlns:catel="http://catel.codeplex.com">
+    <catel:UserControl.Resources>
+        <common:MappingConverter x:Key="MappingTrueToVisibleConverter">
+            <common:MappingConverter.Mappings>
+                <common:Mapping>
+                    <common:Mapping.Input>
+                        <sys:Boolean>True</sys:Boolean>
+                    </common:Mapping.Input>
+                    <common:Mapping.Output>
+                        <Visibility>Visible</Visibility>
+                    </common:Mapping.Output>
+                </common:Mapping>
+            </common:MappingConverter.Mappings>
+        </common:MappingConverter>
+    </catel:UserControl.Resources>
+    <catel:StackGrid>
+        <catel:StackGrid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="50" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </catel:StackGrid.ColumnDefinitions>
+        <TextBlock Text="!" FontWeight="ExtraBold" FontSize="15" Foreground="Red" Visibility="{Binding HasErrorsOrWarnings, Converter={StaticResource MappingTrueToVisibleConverter}, FallbackValue=Hidden}"
+                   ToolTip="{Binding ErrorsAndWarningText, Mode=OneWay}"/>
+        <TextBlock Text="Name:" />
+        <TextBlock Text="{Binding Name}" TextTrimming="CharacterEllipsis" />
+        <TextBlock Text=" Address:" />
+        <TextBlock Text="{Binding Address, StringFormat='0x\{0:x8\}'}" />
+        <TextBlock Text=" Values:" />
+        <TextBlock Text="{Binding ValueString}" />
+    </catel:StackGrid>
+    
+</catel:UserControl>

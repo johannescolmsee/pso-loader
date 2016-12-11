@@ -1,0 +1,17 @@
+<PsoVersionDetectionDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                               DefaultReturnValue="4294967295">
+  <VersionChecks>
+    <PsoVersionDetection Address="2153578496" ComparisonValue="1196445514" ReturnValue="0"/>
+    <!-- JP 0- -->
+    <PsoVersionDetection Address="2153578496" ComparisonValue="1196445509" ReturnValue="1"/>
+    <!-- US 0- -->
+    <PsoVersionDetection Address="2153602944" ComparisonValue="1196445509" ReturnValue="2"/>
+    <!-- US 1 -->
+    <PsoVersionDetection Address="2153626080" ComparisonValue="1196445520" ReturnValue="3"/>
+    <!-- EU 0 -->
+    <PsoVersionDetection Address="2153643672" ComparisonValue="1196445514" ReturnValue="4"/>
+    <!-- JP P -->
+    <PsoVersionDetection Address="2153578496" ComparisonValue="1196445509" ReturnValue="5"/>
+    <!-- US P- -->
+  </VersionChecks>
+</PsoVersionDetectionDefinition>

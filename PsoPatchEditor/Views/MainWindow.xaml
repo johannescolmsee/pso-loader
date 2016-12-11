@@ -1,0 +1,79 @@
+﻿<catel:Window x:Class="PsoPatchEditor.Views.MainWindow"
+              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+              xmlns:catel="http://catel.codeplex.com"
+              xmlns:views="clr-namespace:PsoPatchEditor.Views"
+              xmlns:common="http://PSOLoad.Source"
+              ResizeMode="CanResize">
+    <catel:Window.Resources>
+        <common:MappingConverter x:Key="MappingNullToCollapsedConverter" >
+            <common:MappingConverter.Mappings>
+                <common:Mapping Input="{x:Null}">
+                    <common:Mapping.Output>Collapsed</common:Mapping.Output>
+                </common:Mapping>
+            </common:MappingConverter.Mappings>
+        </common:MappingConverter>
+    </catel:Window.Resources>
+    <catel:StackGrid x:Name="LayoutRoot"
+                     FocusManager.IsFocusScope="True"
+                     >
+        <catel:StackGrid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </catel:StackGrid.RowDefinitions>
+        <Menu>
+            <MenuItem Header="_File" SubmenuOpened="MenuItem_SubmenuOpened">
+                <MenuItem Header="_New" Command="{Binding NewPatchCommand}" />
+                <MenuItem Header="_Load" Command="{Binding LoadPatchCommand}" />
+                <MenuItem Header="_Save" Command="{Binding SavePatchCommand}" />
+                <MenuItem Header="_Export Binary" Command="{Binding ExportBinaryCommand}" ToolTip="Export the 'Content' of the packet - the assembly code with the data, but without header nor footer."/>
+                <MenuItem Header="Export _Packet" Command="{Binding ExportPacketCommand}" ToolTip="Export the whole packet - the assembly code with the data, including header and footer."/>
+                <Separator />
+                <MenuItem Header="Load (old Format)" Command="{Binding LoadPatchOldFormatCommand}" />
+                <MenuItem Header="Convert VersionCheck" Command="{Binding ConvertVersionCheckToBinaryCommand}" />
+            </MenuItem>
+        </Menu>
+        <!--<WrapPanel Orientation="Horizontal">
+            <Button Content="New" Command="{Binding NewPatchCommand}" />
+            <Button Content="Load" Command="{Binding LoadPatchCommand}" />
+            <Button Content="Save" Command="{Binding SavePatchCommand}" />
+            <Button Content="Export Binary" Command="{Binding ExportBinaryCommand}" />
+            <Button Content="Export Packet" Command="{Binding ExportPacketCommand}" />
+            <Separator />
+            <Button Content="Load (old Format)" Command="{Binding LoadPatchOldFormatCommand}" />
+            <Button Content="Convert VersionCheck to Binary" Command="{Binding ConvertVersionCheckToBinaryCommand}" />
+        </WrapPanel>-->
+        <WrapPanel Orientation="Horizontal">
+            <Button Content="Add Patch" Command="{Binding AddPatchCommand}" />
+            <Button Content="Add Redirect" Command="{Binding AddRedirectCommand}" />
+        </WrapPanel>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="2*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <ListBox x:Name="patchesListbox" ItemsSource="{Binding PatchDefinition.Patches}" HorizontalContentAlignment="Stretch">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <views:XmlPatchDefinitionListItemControl DataContext="{Binding}" />
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <views:RedirectControl Grid.Row="1" DataContext="{Binding Redirect}" Visibility="{Binding ., Converter={StaticResource MappingNullToCollapsedConverter}, FallbackValue=Visible}" />
+            
+            <GridSplitter Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Stretch" Width="8" Grid.RowSpan="2"/>
+            <Grid Grid.Column="2" Grid.RowSpan="2">
+                <TextBlock Text="Please Select a patch to show Editor" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                <views:XmlPatchDefinitionControl DataContext="{Binding SelectedItem, ElementName=patchesListbox}" Visibility="{Binding SelectedItem, ElementName=patchesListbox, Converter={StaticResource MappingNullToCollapsedConverter}, FallbackValue=Visible}" Background="White">
+                </views:XmlPatchDefinitionControl>
+            </Grid>
+            
+        </Grid>
+    </catel:StackGrid>
+</catel:Window>

@@ -1,0 +1,41 @@
+﻿<catel:UserControl x:Class="Controls.Views.HexViewerControl"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:models="clr-namespace:Controls.Models"
+                   xmlns:catel="http://catel.codeplex.com">
+
+    <!--<Button Content="Copy To Clipboard" Command="{Binding CopyToClipboardTaskCommand}" Grid.ColumnSpan="2"/>
+        <Button Content="Save" Command="{Binding SaveByteArrayTaskCommand}"  />-->
+    <Grid>
+        <Grid.ContextMenu>
+            <ContextMenu>
+                <ContextMenu.Items>
+                    <MenuItem Header="Copy To Clipboard" Command="{Binding CopyToClipboardTaskCommand}"/>
+                    <MenuItem Header="Save" Command="{Binding SaveByteArrayTaskCommand}"/>
+                </ContextMenu.Items>
+            </ContextMenu>
+        </Grid.ContextMenu>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <Grid x:Name="textArea" SizeChanged="textArea_SizeChanged">
+            <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Hidden" >
+                <TextBlock 
+                     MouseWheel="TextBlock_MouseWheel"
+                     Text="{Binding HexViewerText}" 
+                     FontFamily="{Binding DisplayFont.FontFamily, Source={x:Static models:HexViewerSettings.Instance}}"
+                     FontStretch="{Binding DisplayFont.Stretch, Source={x:Static models:HexViewerSettings.Instance}}"
+                     FontStyle="{Binding DisplayFont.Style, Source={x:Static models:HexViewerSettings.Instance}}"
+                     FontWeight="{Binding DisplayFont.Weight, Source={x:Static models:HexViewerSettings.Instance}}"
+                     FontSize="{Binding FontSize, Source={x:Static models:HexViewerSettings.Instance}}"
+                     />
+            </ScrollViewer>
+        </Grid>
+        <ScrollBar Grid.Column="1" Grid.Row="0" Orientation="Vertical" Name="scrollVertical" 
+                   Value="{Binding VerticalScroll, Mode=TwoWay}" Maximum="{Binding VerticalScrollMaximum}"
+                   ViewportSize="{Binding LinesPerScreen}"
+                   />
+    </Grid>
+
+</catel:UserControl>

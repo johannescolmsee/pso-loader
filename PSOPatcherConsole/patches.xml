@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<PsoPatchDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Patches>
+    <Patch Name="ByteTest" Address="2162036936" AddTerminatingZero="true" ByteValues="DD" />
+    <Patch Name="HalfwordTest" Address="2162036937" AddTerminatingZero="true" ByteValues="CCDD" />
+    <Patch Name="WordTest" Address="2162036937" AddTerminatingZero="true" ByteValues="AABBCCDD" />
+    <Patch Address="3235778761" AddTerminatingZero="true" ByteValues="AABBCCDD" />
+    <Patch Name="LobbyMusic" Address="2151954160" AddTerminatingZero="true" ByteValues="80443734" />
+    <Patch Address="2151954160" AddTerminatingZero="true" ByteValues="80443734" />
+    <Patch Name="RangeTest" Address="2162036937" AddTerminatingZero="true" ByteValues="AABBCCDDAABBCCDDAABBCCDDAABBCCDD" />
+    <Patch Name="StringTest" Address="2162036937" StringValue="KUROMORI_WAS_HERE!" AddTerminatingZero="true" />
+    <Patch Name="RestoreCheck" Address="2163275964" StringValue="HAX" AddTerminatingZero="false" />
+  </Patches>
+  <Redirect Name="Sylverant" IPAddress="138.197.20.130" Port="9200" />
+</PsoPatchDefinition>
