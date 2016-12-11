@@ -19,6 +19,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PsoPatchEditor", "PsoPatchE
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PsoBackupServer", "PsoBackupServer\PsoBackupServer.csproj", "{6650CEDA-0E80-43DC-8EBA-99F7582F80E6}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Misc", "Misc", "{5AC82E89-11DF-43A6-8A15-95B7B1CC1495}"
+	ProjectSection(SolutionItems) = preProject
+		LICENSE = LICENSE
+		PaketDescribed.rtf = PaketDescribed.rtf
+		README.txt = README.txt
+		ReturnPaketDescribed.rtf = ReturnPaketDescribed.rtf
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
