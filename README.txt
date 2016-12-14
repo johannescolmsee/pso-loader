@@ -25,3 +25,5 @@ If you are only interested in how you could create the patching messages, have a
 	-> The code which is run on gamecube can even return an 32bit value.
 
 
+Update:
+Attention: There are lots of unfinished modules in this code, e.g. the BackupServer is still work-in-progress.
