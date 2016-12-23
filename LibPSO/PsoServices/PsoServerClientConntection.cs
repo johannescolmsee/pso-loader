@@ -31,7 +31,7 @@ namespace LibPSO.PsoServices
             get { return new ReadOnlyObservableCollection<PsoMessage>(this._Messages); }
         }
 
-        public async Task InitConnection(UInt32 serverkey, UInt32 clientkey)
+        public Task InitConnection(UInt32 serverkey, UInt32 clientkey)
         {
             this._Stream = this._Client.GetStream();
             switch (this._ClientType)
@@ -49,7 +49,7 @@ namespace LibPSO.PsoServices
                     break;
             }
             var packet = Packets.GetWelcomePacket(serverkey, clientkey, this._ClientType, true);
-            await SendMessageToClient(packet, false);
+            return SendMessageToClient(packet, false);
         }
 
         public async Task SendMessageToClient(byte[] message, bool crypt)

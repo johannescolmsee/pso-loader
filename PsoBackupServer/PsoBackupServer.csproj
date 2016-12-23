@@ -68,7 +68,6 @@
       <Name>LibPSO</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <None Include="PsoReadMem\pso_readmem.s" />
   </ItemGroup>

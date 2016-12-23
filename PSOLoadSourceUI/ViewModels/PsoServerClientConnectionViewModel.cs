@@ -40,14 +40,14 @@
             var t = this.Client.StartReadingTask(this._ReadingThreadCancellationTokenSource.Token);
         }
 
-        protected override async Task CloseAsync()
+        protected override Task CloseAsync()
         {
             if (this._ReadingThreadCancellationTokenSource != null)
             {
                 this._ReadingThreadCancellationTokenSource.Cancel();
             }
             this.Client.Dispose();
-            await base.CloseAsync();
+            return base.CloseAsync();
         }
 
         [Model]
@@ -146,7 +146,7 @@
             }
             if (exception != null)
             {
-                await this._MessageService.ShowErrorAsync(exception);
+                await this._MessageService.ShowErrorAsync(exception).ConfigureAwait(false);
             }
         }
 
@@ -202,7 +202,7 @@
             }
             if (exception != null)
             {
-                await this._MessageService.ShowErrorAsync(exception);
+                await this._MessageService.ShowErrorAsync(exception).ConfigureAwait(false);
             }
         }
 
@@ -253,7 +253,7 @@
             }
             if (exception != null)
             {
-                await this._MessageService.ShowErrorAsync(exception);
+                await this._MessageService.ShowErrorAsync(exception).ConfigureAwait(false);
             }
         }
 
@@ -300,7 +300,7 @@
             }
             if (exception != null)
             {
-                await this._MessageService.ShowErrorAsync(exception);
+                await this._MessageService.ShowErrorAsync(exception).ConfigureAwait(false);
             }
         }
 
@@ -350,7 +350,7 @@
             }
             if (exception != null)
             {
-                await this._MessageService.ShowErrorAsync(exception);
+                await this._MessageService.ShowErrorAsync(exception).ConfigureAwait(false);
             }
         }
 

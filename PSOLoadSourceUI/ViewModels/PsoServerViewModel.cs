@@ -27,9 +27,9 @@
             this.SelectedClientType = this.ClientTypes.First();
         }
 
-        protected override async Task CloseAsync()
+        protected override Task CloseAsync()
         {
-            await base.CloseAsync();
+            return base.CloseAsync();
         }
 
         public IPsoServer PsoServer

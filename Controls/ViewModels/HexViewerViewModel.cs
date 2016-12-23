@@ -70,11 +70,11 @@
 
         }
 
-        protected override async Task CloseAsync()
+        protected override Task CloseAsync()
         {
             // TODO: unsubscribe from events here
 
-            await base.CloseAsync();
+            return base.CloseAsync();
         }
 
         public byte[] Model
